@@ -67,7 +67,7 @@ const LoadedTabPage = ({
           style={{ width: "30px", height: "30px" }}
         />
 
-        {authenticatedUser.username ? (
+        {!authenticatedUser.username ? (
           <div>
             <button
               className="signin btn"
