@@ -1,21 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
-import "./Header.css"
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import "./Header.css";
 
-import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
-import { getConfig } from '@edx/frontend-platform';
-import { useToggle } from '@edx/paragon';
+import { getAuthenticatedUser } from "@edx/frontend-platform/auth";
+import { getConfig } from "@edx/frontend-platform";
+import { useToggle } from "@edx/paragon";
+import camped from "./camped.jpg";
 
-import { CourseTabsNavigation } from '../course-tabs';
-import { useModel } from '../generic/model-store';
-import { AlertList } from '../generic/user-messages';
-import StreakModal from '../shared/streak-celebration';
-import InstructorToolbar from '../instructor-toolbar';
-import useEnrollmentAlert from '../alerts/enrollment-alert';
-import useLogistrationAlert from '../alerts/logistration-alert';
+import { CourseTabsNavigation } from "../course-tabs";
+import { useModel } from "../generic/model-store";
+import { AlertList } from "../generic/user-messages";
+import StreakModal from "../shared/streak-celebration";
+import InstructorToolbar from "../instructor-toolbar";
+import useEnrollmentAlert from "../alerts/enrollment-alert";
+import useLogistrationAlert from "../alerts/logistration-alert";
 
-import ProductTours from '../product-tours/ProductTours';
+import ProductTours from "../product-tours/ProductTours";
 
 const LoadedTabPage = ({
   activeTabSlug,
@@ -24,14 +25,8 @@ const LoadedTabPage = ({
   metadataModel,
   unitId,
 }) => {
-  const {
-    celebrations,
-    org,
-    originalUserIsStaff,
-    tabs,
-    title,
-    verifiedMode,
-  } = useModel('courseHomeMeta', courseId);
+  const { celebrations, org, originalUserIsStaff, tabs, title, verifiedMode } =
+    useModel("courseHomeMeta", courseId);
 
   // Logistration and enrollment alerts are only really used for the outline tab, but loaded here to put them above
   // breadcrumbs when they are visible.
@@ -40,11 +35,15 @@ const LoadedTabPage = ({
 
   const authenticatedUser = getAuthenticatedUser();
 
-  const activeTab = tabs.filter(tab => tab.slug === activeTabSlug)[0];
+  const activeTab = tabs.filter((tab) => tab.slug === activeTabSlug)[0];
 
-  const streakLengthToCelebrate = celebrations && celebrations.streakLengthToCelebrate;
-  const streakDiscountCouponEnabled = celebrations && celebrations.streakDiscountEnabled && verifiedMode;
-  const [isStreakCelebrationOpen,, closeStreakCelebration] = useToggle(streakLengthToCelebrate);
+  const streakLengthToCelebrate =
+    celebrations && celebrations.streakLengthToCelebrate;
+  const streakDiscountCouponEnabled =
+    celebrations && celebrations.streakDiscountEnabled && verifiedMode;
+  const [isStreakCelebrationOpen, , closeStreakCelebration] = useToggle(
+    streakLengthToCelebrate
+  );
 
   return (
     <>
@@ -55,23 +54,43 @@ const LoadedTabPage = ({
         org={org}
       />
       <Helmet>
-        <title>{`${activeTab ? `${activeTab.title} | ` : ''}${title} | ${getConfig().SITE_NAME}`}</title>
+        <title>{`${activeTab ? `${activeTab.title} | ` : ""}${title} | ${
+          getConfig().SITE_NAME
+        }`}</title>
       </Helmet>
 
-      
-      <div className='header-cont d-flex' style={{margin:"20px"}}>
-        <img src={camped} alt="camped_logo" className="img-fluid" style={{ width: '30px', height: '30px' }}/>
-        
-        { authenticatedUser ?
-        <div>
-            <button className='signin btn' style={{backgroundColor:"#0A3055",color:"white"}}> <a href="http://local.overhang.io/login" className='signoutlink'> Sign In</a></button>
-        </div>:
-        <div>
-            <button className='signin btn' style={{backgroundColor:"#0A3055",color:"white"}}><a href='http://local.overhang.io/logout' className='signoutlink'>Sign Out</a></button>
-        </div>
-        }
-      </div>
+      <div className="header-cont d-flex" style={{ margin: "20px" }}>
+        <img
+          src={camped}
+          alt="camped_logo"
+          className="img-fluid"
+          style={{ width: "30px", height: "30px" }}
+        />
 
+        {authenticatedUser ? (
+          <div>
+            <button
+              className="signin btn"
+              style={{ backgroundColor: "#0A3055", color: "white" }}
+            >
+              <a href="http://local.overhang.io/login" className="signoutlink">
+                Sign In
+              </a>
+            </button>
+          </div>
+        ) : (
+          <div>
+            <button
+              className="signin btn"
+              style={{ backgroundColor: "#0A3055", color: "white" }}
+            >
+              <a href="http://local.overhang.io/logout" className="signoutlink">
+                Sign Out
+              </a>
+            </button>
+          </div>
+        )}
+      </div>
 
       {originalUserIsStaff && (
         <InstructorToolbar
@@ -98,10 +117,12 @@ const LoadedTabPage = ({
             ...logistrationAlert,
           }}
         />
-        <CourseTabsNavigation tabs={tabs} className="mb-3" activeTabSlug={activeTabSlug} />
-        <div className="container-xl">
-          {children}
-        </div>
+        <CourseTabsNavigation
+          tabs={tabs}
+          className="mb-3"
+          activeTabSlug={activeTabSlug}
+        />
+        <div className="container-xl">{children}</div>
       </main>
     </>
   );
@@ -117,7 +138,7 @@ LoadedTabPage.propTypes = {
 
 LoadedTabPage.defaultProps = {
   children: null,
-  metadataModel: 'courseHomeMeta',
+  metadataModel: "courseHomeMeta",
   unitId: null,
 };
 
