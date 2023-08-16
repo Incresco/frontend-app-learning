@@ -1,0 +1,19 @@
+.signin{
+    margin-right:30px;
+    font-size: 18px;
+}
+
+.signin:hover{
+    box-shadow: 0 2px 4px rgba(0, 0, 5, 0.3);
+}
+
+.header-cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.signoutlink{
+    text-decoration: none;
+    color: white;
+}

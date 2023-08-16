@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+import "./Header.css"
 
+import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { getConfig } from '@edx/frontend-platform';
 import { useToggle } from '@edx/paragon';
 
@@ -36,6 +38,8 @@ const LoadedTabPage = ({
   const logistrationAlert = useLogistrationAlert(courseId);
   const enrollmentAlert = useEnrollmentAlert(courseId);
 
+  const authenticatedUser = getAuthenticatedUser();
+
   const activeTab = tabs.filter(tab => tab.slug === activeTabSlug)[0];
 
   const streakLengthToCelebrate = celebrations && celebrations.streakLengthToCelebrate;
@@ -53,6 +57,22 @@ const LoadedTabPage = ({
       <Helmet>
         <title>{`${activeTab ? `${activeTab.title} | ` : ''}${title} | ${getConfig().SITE_NAME}`}</title>
       </Helmet>
+
+      
+      <div className='header-cont d-flex' style={{margin:"20px"}}>
+        <img src={camped} alt="camped_logo" className="img-fluid" style={{ width: '30px', height: '30px' }}/>
+        
+        { authenticatedUser ?
+        <div>
+            <button className='signin btn' style={{backgroundColor:"#0A3055",color:"white"}}> <a href="http://local.overhang.io/login" className='signoutlink'> Sign In</a></button>
+        </div>:
+        <div>
+            <button className='signin btn' style={{backgroundColor:"#0A3055",color:"white"}}><a href='http://local.overhang.io/logout' className='signoutlink'>Sign Out</a></button>
+        </div>
+        }
+      </div>
+
+
       {originalUserIsStaff && (
         <InstructorToolbar
           courseId={courseId}
