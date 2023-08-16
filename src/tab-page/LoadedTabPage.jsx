@@ -44,7 +44,7 @@ const LoadedTabPage = ({
   const [isStreakCelebrationOpen, , closeStreakCelebration] = useToggle(
     streakLengthToCelebrate
   );
-
+    console.log(authenticatedUser)
   return (
     <>
       <ProductTours
