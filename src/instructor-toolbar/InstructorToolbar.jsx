@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
 
+import "./Header.css";
+import camped from "./camped.jpg"
+
 import { ALERT_TYPES, AlertList } from '../generic/user-messages';
 import Alert from '../generic/user-messages/Alert';
 import MasqueradeWidget from './masquerade-widget';
