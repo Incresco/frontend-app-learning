@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
-import "./Header.css";
 
 import { getAuthenticatedUser } from "@edx/frontend-platform/auth";
 import { getConfig } from "@edx/frontend-platform";
 import { useToggle } from "@edx/paragon";
-import camped from "./camped.jpg";
 
 import { CourseTabsNavigation } from "../course-tabs";
 import { useModel } from "../generic/model-store";
@@ -58,39 +56,6 @@ const LoadedTabPage = ({
           getConfig().SITE_NAME
         }`}</title>
       </Helmet>
-
-      {/* <div className="header-cont d-flex" style={{ margin: "20px" }}>
-        <img
-          src={camped}
-          alt="camped_logo"
-          className="img-fluid"
-          style={{ width: "30px", height: "30px" }}
-        />
-
-        {!authenticatedUser.username ? (
-          <div>
-            <button
-              className="signin btn"
-              style={{ backgroundColor: "#0A3055", color: "white" }}
-            >
-              <a href="http://local.overhang.io/login" className="signoutlink">
-                Sign In
-              </a>
-            </button>
-          </div>
-        ) : (
-          <div>
-            <button
-              className="signin btn"
-              style={{ backgroundColor: "#0A3055", color: "white" }}
-            >
-              <a href="http://local.overhang.io/logout" className="signoutlink">
-                Sign Out
-              </a>
-            </button>
-          </div>
-        )}
-      </div> */}
 
       {originalUserIsStaff && (
         <InstructorToolbar

@@ -15,8 +15,12 @@
 }
 
 .signoutlink{
-    text-decoration: none;
+    text-decoration: none !important;
     color: white;
+}
+
+.signoutlink:hover{
+    text-decoration: none !important;
 }
 
 .signin:hover .signoutlink{
