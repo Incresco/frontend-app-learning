@@ -38,7 +38,7 @@ const GoalUnsubscribe = ({ intl }) => {
 
   return (
     <>
-      <Header showUserDropdown={false} />
+      {/* <Header showUserDropdown={false} /> */}
       <main id="main-content" className="container my-5 text-center">
         {isLoading && (
           <PageLoading srMessage={`${intl.formatMessage(messages.loading)}`} />
