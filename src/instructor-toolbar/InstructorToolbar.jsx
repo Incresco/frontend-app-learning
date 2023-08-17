@@ -4,6 +4,7 @@ import { getConfig } from '@edx/frontend-platform';
 
 import "./Header.css";
 import camped from "./camped.jpg"
+import { getAuthenticatedUser } from "@edx/frontend-platform/auth";
 
 import { ALERT_TYPES, AlertList } from '../generic/user-messages';
 import Alert from '../generic/user-messages/Alert';
@@ -67,6 +68,8 @@ const InstructorToolbar = (props) => {
 
   const accessExpirationMasqueradeBanner = useAccessExpirationMasqueradeBanner(courseId, tab);
   const courseStartDateMasqueradeBanner = useCourseStartMasqueradeBanner(courseId, tab);
+
+  const authenticatedUser = getAuthenticatedUser();
 
   return (!didMount ? null : (
     <div>
