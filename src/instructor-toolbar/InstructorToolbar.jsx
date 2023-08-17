@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
 
+import "./Header.css";
+import camped from "./camped.jpg"
+import { getAuthenticatedUser } from "@edx/frontend-platform/auth";
+
 import { ALERT_TYPES, AlertList } from '../generic/user-messages';
 import Alert from '../generic/user-messages/Alert';
 import MasqueradeWidget from './masquerade-widget';
@@ -65,48 +69,84 @@ const InstructorToolbar = (props) => {
   const accessExpirationMasqueradeBanner = useAccessExpirationMasqueradeBanner(courseId, tab);
   const courseStartDateMasqueradeBanner = useCourseStartMasqueradeBanner(courseId, tab);
 
+  const authenticatedUser = getAuthenticatedUser();
+
   return (!didMount ? null : (
-    <div data-testid="instructor-toolbar">
-      <div className="bg-primary text-white">
-        <div className="container-xl py-3 d-md-flex justify-content-end align-items-start">
-          <div className="align-items-center flex-grow-1 d-md-flex mx-1 my-1">
-            <MasqueradeWidget courseId={courseId} onError={showMasqueradeError} />
+    <div>
+      <div className="header-cont d-flex" style={{ margin: "20px" }}>
+        <img
+          src={camped}
+          alt="camped_logo"
+          className="img-fluid"
+          style={{ width: "30px", height: "30px" }}
+        />
+
+        {!authenticatedUser.username ? (
+          <div>
+            <button
+              className="signin btn"
+              style={{ backgroundColor: "#0A3055", color: "white" }}
+            >
+              <a href="http://local.overhang.io/login" className="signoutlink">
+                Sign In
+              </a>
+            </button>
           </div>
-          {(urlStudio || urlInsights) && (
-            <>
-              <hr className="border-light" />
-              <span className="mr-2 mt-1 col-form-label">View course in:</span>
-            </>
-          )}
-          {urlStudio && (
-            <span className="mx-1 my-1">
-              <a className="btn btn-inverse-outline-primary" href={urlStudio}>Studio</a>
-            </span>
-          )}
-          {urlInsights && (
-            <span className="mx-1 my-1">
-              <a className="btn btn-inverse-outline-primary" href={urlInsights}>Insights</a>
-            </span>
-          )}
-        </div>
+        ) : (
+          <div>
+            <button
+              className="signin btn"
+              style={{ backgroundColor: "#0A3055", color: "white" }}
+            >
+              <a href="http://local.overhang.io/logout" className="signoutlink">
+                Sign Out
+              </a>
+            </button>
+          </div>
+        )}
       </div>
-      {masqueradeErrorMessage && (
-        <div className="container-xl mt-3">
-          <Alert
-            type={ALERT_TYPES.ERROR}
-            dismissible={false}
-          >
-            {masqueradeErrorMessage}
-          </Alert>
+      <div data-testid="instructor-toolbar">
+        <div className="bg-primary text-white">
+          <div className="container-xl py-3 d-md-flex justify-content-end align-items-start">
+            <div className="align-items-center flex-grow-1 d-md-flex mx-1 my-1">
+              <MasqueradeWidget courseId={courseId} onError={showMasqueradeError} />
+            </div>
+            {(urlStudio || urlInsights) && (
+              <>
+                <hr className="border-light" />
+                <span className="mr-2 mt-1 col-form-label">View course in:</span>
+              </>
+            )}
+            {urlStudio && (
+              <span className="mx-1 my-1">
+                <a className="btn btn-inverse-outline-primary" href={urlStudio}>Studio</a>
+              </span>
+            )}
+            {urlInsights && (
+              <span className="mx-1 my-1">
+                <a className="btn btn-inverse-outline-primary" href={urlInsights}>Insights</a>
+              </span>
+            )}
+          </div>
         </div>
-      )}
-      <AlertList
-        topic="instructor-toolbar-alerts"
-        customAlerts={{
-          ...accessExpirationMasqueradeBanner,
-          ...courseStartDateMasqueradeBanner,
-        }}
-      />
+        {masqueradeErrorMessage && (
+          <div className="container-xl mt-3">
+            <Alert
+              type={ALERT_TYPES.ERROR}
+              dismissible={false}
+            >
+              {masqueradeErrorMessage}
+            </Alert>
+          </div>
+        )}
+        <AlertList
+          topic="instructor-toolbar-alerts"
+          customAlerts={{
+            ...accessExpirationMasqueradeBanner,
+            ...courseStartDateMasqueradeBanner,
+          }}
+        />
+      </div>
     </div>
   ));
 };
