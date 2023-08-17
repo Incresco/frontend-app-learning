@@ -73,11 +73,7 @@ const PrivateCourseAlert = ({ intl, payload }) => {
           <FormattedMessage
             id="learning.privateCourse.signInOrRegister"
             description="Prompts the user to sign in or register to see course content."
-            defaultMessage="{signIn} or {register} and then enroll in this course."
-            values={{
-              signIn,
-              register,
-            }}
+            defaultMessage="SignIn or register and then enroll in this course."
           />
         </>
       )}
