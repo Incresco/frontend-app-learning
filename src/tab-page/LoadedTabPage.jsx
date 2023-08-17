@@ -67,7 +67,7 @@ const LoadedTabPage = ({
         />
       )}
 
-      {authenticatedUser==null && (
+      {authenticatedUser == null && (
         <div className="header-cont d-flex" style={{ margin: "20px" }}>
           <img
             src={camped}
@@ -80,7 +80,7 @@ const LoadedTabPage = ({
               className="signin btn"
               style={{ backgroundColor: "#0A3055", color: "white" }}
             >
-              <a href="http://local.overhang.io/login" className="signoutlink">
+              <a href="dev2-lms.camped.academy/auth/login/cognito/?auth_entry=login&next=%2Fdashboard" className="signoutlink">
                 Sign In
               </a>
             </button>

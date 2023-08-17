@@ -73,26 +73,26 @@ const InstructorToolbar = (props) => {
 
   return (!didMount ? null : (
     <div>
-      
+
       {authenticatedUser.username && (
-      <div className="header-cont d-flex" style={{ margin: "20px" }}>
-        <img
-          src={camped}
-          alt="camped_logo"
-          className="img-fluid"
-          style={{ width: "30px", height: "30px" }}
-        />
+        <div className="header-cont d-flex" style={{ margin: "20px" }}>
+          <img
+            src={camped}
+            alt="camped_logo"
+            className="img-fluid"
+            style={{ width: "30px", height: "30px" }}
+          />
           <div>
             <button
               className="signin btn"
               style={{ backgroundColor: "#0A3055", color: "white" }}
             >
-              <a href="http://local.overhang.io/logout" className="signoutlink">
+              <a href="https://dev2-lms.camped.academy/logout" className="signoutlink">
                 Sign Out
               </a>
             </button>
           </div>
-      </div>
+        </div>
       )}
 
       <div data-testid="instructor-toolbar">
