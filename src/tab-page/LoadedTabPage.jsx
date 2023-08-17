@@ -59,7 +59,7 @@ const LoadedTabPage = ({
         }`}</title>
       </Helmet>
 
-      <div className="header-cont d-flex" style={{ margin: "20px" }}>
+      {/* <div className="header-cont d-flex" style={{ margin: "20px" }}>
         <img
           src={camped}
           alt="camped_logo"
@@ -90,7 +90,7 @@ const LoadedTabPage = ({
             </button>
           </div>
         )}
-      </div>
+      </div> */}
 
       {originalUserIsStaff && (
         <InstructorToolbar
