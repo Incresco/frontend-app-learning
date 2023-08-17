@@ -67,7 +67,7 @@ const LoadedTabPage = ({
         />
       )}
 
-      {!authenticatedUser.username && (
+      {authenticatedUser==null && (
         <div className="header-cont d-flex" style={{ margin: "20px" }}>
           <img
             src={camped}
