@@ -47,13 +47,14 @@ const EnrollmentAlert = ({ intl, payload }) => {
   );
 
   return (
-    <Alert variant={type} icon={icon}>
-      <div className="d-flex">
-        {text}
-        {button}
-        {loading && <FontAwesomeIcon icon={faSpinner} spin />}
-      </div>
-    </Alert>
+    // <Alert variant={type} icon={icon}>
+    //   <div className="d-flex">
+    //     {text}
+    //     {button}
+    //     {loading && <FontAwesomeIcon icon={faSpinner} spin />}
+    //   </div>
+    // </Alert>
+    <></>
   );
 };
 
