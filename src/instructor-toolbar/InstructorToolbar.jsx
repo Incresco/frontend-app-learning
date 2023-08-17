@@ -73,6 +73,8 @@ const InstructorToolbar = (props) => {
 
   return (!didMount ? null : (
     <div>
+      
+      {authenticatedUser.username && (
       <div className="header-cont d-flex" style={{ margin: "20px" }}>
         <img
           src={camped}
@@ -80,19 +82,6 @@ const InstructorToolbar = (props) => {
           className="img-fluid"
           style={{ width: "30px", height: "30px" }}
         />
-
-        {!authenticatedUser.username ? (
-          <div>
-            <button
-              className="signin btn"
-              style={{ backgroundColor: "#0A3055", color: "white" }}
-            >
-              <a href="http://local.overhang.io/login" className="signoutlink">
-                Sign In
-              </a>
-            </button>
-          </div>
-        ) : (
           <div>
             <button
               className="signin btn"
@@ -103,8 +92,9 @@ const InstructorToolbar = (props) => {
               </a>
             </button>
           </div>
-        )}
       </div>
+      )}
+
       <div data-testid="instructor-toolbar">
         <div className="bg-primary text-white">
           <div className="container-xl py-3 d-md-flex justify-content-end align-items-start">

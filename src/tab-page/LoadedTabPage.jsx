@@ -6,6 +6,9 @@ import { getAuthenticatedUser } from "@edx/frontend-platform/auth";
 import { getConfig } from "@edx/frontend-platform";
 import { useToggle } from "@edx/paragon";
 
+import "./Header.css";
+import camped from "./camped.jpg"
+
 import { CourseTabsNavigation } from "../course-tabs";
 import { useModel } from "../generic/model-store";
 import { AlertList } from "../generic/user-messages";
@@ -42,7 +45,7 @@ const LoadedTabPage = ({
   const [isStreakCelebrationOpen, , closeStreakCelebration] = useToggle(
     streakLengthToCelebrate
   );
-    console.log(authenticatedUser)
+
   return (
     <>
       <ProductTours
@@ -52,9 +55,8 @@ const LoadedTabPage = ({
         org={org}
       />
       <Helmet>
-        <title>{`${activeTab ? `${activeTab.title} | ` : ""}${title} | ${
-          getConfig().SITE_NAME
-        }`}</title>
+        <title>{`${activeTab ? `${activeTab.title} | ` : ""}${title} | ${getConfig().SITE_NAME
+          }`}</title>
       </Helmet>
 
       {originalUserIsStaff && (
@@ -64,6 +66,28 @@ const LoadedTabPage = ({
           tab={activeTabSlug}
         />
       )}
+
+      {!authenticatedUser.username && (
+        <div className="header-cont d-flex" style={{ margin: "20px" }}>
+          <img
+            src={camped}
+            alt="camped_logo"
+            className="img-fluid"
+            style={{ width: "30px", height: "30px" }}
+          />
+          <div>
+            <button
+              className="signin btn"
+              style={{ backgroundColor: "#0A3055", color: "white" }}
+            >
+              <a href="http://local.overhang.io/login" className="signoutlink">
+                Sign In
+              </a>
+            </button>
+          </div>
+        </div>
+      )}
+
       <StreakModal
         courseId={courseId}
         metadataModel={metadataModel}
