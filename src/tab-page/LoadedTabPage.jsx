@@ -46,6 +46,11 @@ const LoadedTabPage = ({
     streakLengthToCelebrate
   );
 
+
+  const redirectFunction=()=>{
+    global.location.replace('https://dev2-lms.camped.academy/auth/login/cognito/?auth_entry=login&next=%2Fdashboard');
+  }
+
   return (
     <>
       <ProductTours
@@ -79,10 +84,11 @@ const LoadedTabPage = ({
             <button
               className="signin btn"
               style={{ backgroundColor: "#0A3055", color: "white" }}
+              onClick={redirectFunction}
             >
-              <a href="dev2-lms.camped.academy/auth/login/cognito/?auth_entry=login&next=%2Fdashboard" className="signoutlink">
+              {/* <a href="dev2-lms.camped.academy/auth/login/cognito/?auth_entry=login&next=%2Fdashboard" className="signoutlink"> */}
                 Sign In
-              </a>
+              {/* </a> */}
             </button>
           </div>
         </div>
