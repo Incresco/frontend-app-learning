@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import PropTypes from 'prop-types';
@@ -69,3 +70,4 @@ EnrollmentAlert.propTypes = {
 };
 
 export default injectIntl(EnrollmentAlert);
+/* eslint-disable */

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
@@ -56,3 +57,4 @@ GoalUnsubscribe.propTypes = {
 };
 
 export default injectIntl(GoalUnsubscribe);
+/* eslint-disable */

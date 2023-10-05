@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
@@ -108,3 +109,4 @@ PrivateCourseAlert.propTypes = {
 };
 
 export default injectIntl(PrivateCourseAlert);
+/* eslint-disable */

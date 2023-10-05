@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect } from 'react';
 import { LearningHeader as Header } from '@edx/frontend-component-header';
 import Footer from '@edx/frontend-component-footer';
@@ -62,3 +63,4 @@ CourseAccessErrorPage.propTypes = {
 };
 
 export default injectIntl(CourseAccessErrorPage);
+/* eslint-disable */

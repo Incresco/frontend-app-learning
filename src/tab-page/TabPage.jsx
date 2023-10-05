@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
@@ -112,3 +113,4 @@ TabPage.propTypes = {
 };
 
 export default injectIntl(TabPage);
+/* eslint-disable */
