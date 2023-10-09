@@ -49,7 +49,7 @@ const LoadedTabPage = ({
 
 
   const redirectFunction=()=>{
-    global.location.replace('https://dev2-lms.camped.academy/auth/login/cognito/?auth_entry=login&next=%2Fdashboard');
+    global.location.replace(`${getConfig().LMS_BASE_URL}/auth/login/cognito/?auth_entry=login&next=%2Fdashboard`);
   }
 
   return (
