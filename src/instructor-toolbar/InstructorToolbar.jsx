@@ -81,7 +81,7 @@ const InstructorToolbar = (props) => {
             src={camped}
             alt="camped_logo"
             className="img-fluid"
-            style={{ width: "30px", height: "30px" }}
+            style={{ width: "97px", height: "40px" }}
           />
           <div>
             <button
