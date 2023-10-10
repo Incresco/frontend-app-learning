@@ -88,7 +88,7 @@ const InstructorToolbar = (props) => {
               className="signin btn"
               style={{ backgroundColor: "#0A3055", color: "white" }}
             >
-              <a href="https://dev2-lms.camped.academy/logout" className="signoutlink">
+              <a href={`${getConfig().LMS_BASE_URL}/logout`} className="signoutlink">
                 Sign Out
               </a>
             </button>

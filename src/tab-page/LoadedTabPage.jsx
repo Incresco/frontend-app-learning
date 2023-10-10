@@ -86,10 +86,8 @@ const LoadedTabPage = ({
               className="signin btn"
               style={{ backgroundColor: "#0A3055", color: "white" }}
               onClick={redirectFunction}
-            >
-              {/* <a href="dev2-lms.camped.academy/auth/login/cognito/?auth_entry=login&next=%2Fdashboard" className="signoutlink"> */}
-                Sign In
-              {/* </a> */}
+            >           
+              Sign In
             </button>
           </div>
         </div>
